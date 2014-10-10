@@ -11,8 +11,8 @@ m3 hackathon team7
 * Cordova http://cordova.apache.org/
 * AngularJS https://angularjs.org/
 * WegGLで3D表示 (方法は任意・以下は参考)
-** three.js http://threejs.org/
-** cocoonjs https://www.ludei.com/cocoonjs/
+  * three.js http://threejs.org/
+  * cocoonjs https://www.ludei.com/cocoonjs/
 * 標高取得？
 * AR？
 
