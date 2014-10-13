@@ -3,6 +3,9 @@ m3hackathon7
 
 m3 hackathon team7 
 
+コミュニケーションはGitterで。
+https://gitter.im/m3hackathon7
+
 テーマ
 ----
 
