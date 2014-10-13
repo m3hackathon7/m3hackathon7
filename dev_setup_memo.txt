@@ -1,0 +1,91 @@
+Cordova開発環境セットアップ
+=====
+
+* 基本的に以下参照
+http://www.buildinsider.net/mobile/bookhtml5hybrid/0401
+
+
+実際にやったことを整理
+----
+
+私の環境でiOSのみを対象にした環境構築で、
+実際にやったことを整理すると以下の通りでした。
+
+
+事前準備
+---
+
+0. npm、homebrewはインストール済み
+0. homebrewを最新化
+  $ homebrew update
+1. Xcode インストール
+2. Xcodeを初回起動してライセンスに[Agree]する
+3. cordovaインストール
+  $ npm install cordova -g
+4. エミュレータの起動コマンドラッパをインストール
+  $ brew install ios-sim
+  * 最新ではない場合やXcodeがないとエラーになる
+
+
+初期アプリ作成
+----
+
+1. プロジェクト作成
+  $ cordova create hello com.example.hello HelloWorld -d
+2. プラットフォーム追加
+  $ cd hello
+  $ cordova platform add ios
+3. エミュレータ起動
+  $ cordova emulate ios -d
+
+4. 以下の方法でも実機で起動できるらしい
+  $ npm install -g ios-deploy // iosアプリをコマンドラインから起動させるラッパー
+  $ cordova run ios
+  # iosは実機がなければシミュレータが起動するっぽい
+
+
+アプリ実行時のconsole.log()のログを確認する
+----
+
+1. consoleプラグインをインストール
+  $ cordova plugin add org.apache.cordova.console
+
+2. ログを表示する
+  (エミュレータ起動の最後に出てくるメッセージに、
+  stdoutとstderrの出力先パスが表示される)
+  $ tail -f ./platforms/ios/cordova/console.log
+
+
+アプリ内Webコンテンツをブラウザで確認する
+----
+
+1. サーバを起動する
+  $  cordova serve ios
+2. ブラウザで確認する
+  $ open http://localhost:8000
+
+
+このモードで画面を確認し、ある程度したらエミュレートで確認するとよさそう。
+
+
+
+iOSのアプリとしてXCodeでプロジェクトを開くには
+----
+
+  $ open platforms/ios/HelloWorld.xcodeproj
+
+
+めも
+----
+
+ngCordova
+http://ngcordova.com/
+  AngularJSのプラグイン。Cordovaの機能をAngularJS上で使うためのもの
+
+
+疑問
+-----
+
+* cordova emulate で起動するiPhoneのデバイスをiPhone4sから変えたい
+
+
