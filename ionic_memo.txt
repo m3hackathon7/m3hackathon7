@@ -1,0 +1,105 @@
+ionic 開発環境構築めも
+=====
+
+環境構築手順
+-----
+
+* 参照
+  *  http://ionicframework.com/getting-started/
+
+1. cordovaの環境構築をする
+2. ionicをインストール
+  $ npm install -g ionic
+
+
+初期アプリ作成
+-----
+
+
+1. 初期アプリ作成
+$ ionic start myApp tabs
+
+
+2. 対象プラットフォームを追加
+  $ ionic platform add ios
+
+3. エミュレータで起動
+  $ ionic emulate
+
+4. ブラウザで動作確認する
+  $ ionic serve
+  自動的にブラウザでアプリの画面が表示される。
+  この状態で、wwwフォルダ下のファイルを編集すると、
+  自動でブラウザ画面がリロードされて動作を確認できる
+
+
+メモ
+-----
+
+* ionic startで生成されるpackage.jsonやglupfile.jsなどは、
+  ionicコマンドの中で間接的に使われているっぽい？
+
+
+* リポジトリにはplatforms, pluginsは入らないそのため、
+　プロジェクトをcloneした後にplatformやpluginをaddする必要があるらしい
+  * 初期で以下の３プラグインが追加される
+```
+Fetching plugin "org.apache.cordova.device" via plugin registry
+Fetching plugin "org.apache.cordova.console" via plugin registry
+Fetching plugin "com.ionic.keyboard" via plugin registry
+```
+
+* cordova save|restore --experimental platforms|plugins　で設定を保存・再設定ができる
+  * restoreはplugins、platformsの順で実行する必要がある
+    $ cordova save --experimental plugins
+    $ cordova save --experimental platforms
+    $ cordova restore --experimental plugins
+    $ cordova restore --experimental platforms
+
+
+* 開発向けの操作はglupを使う様子
+  * https://github.com/driftyco/ionic#development
+
+* ionic チュートリアル
+  * http://ccoenraets.github.io/ionic-tutorial/index.html
+
+* アプリ生成時の説明
+```
+Creating Ionic app in folder /Users/namu/dev/ios/myApp based on tabs project
+
+Downloading: https://github.com/driftyco/ionic-app-base/archive/master.zip
+[=============================]  100%  0.0s
+
+Downloading: https://github.com/driftyco/ionic-starter-tabs/archive/master.zip
+[=============================]  100%  0.0s
+
+Update config.xml
+Initializing cordova project
+Fetching plugin "org.apache.cordova.device" via plugin registry
+Fetching plugin "org.apache.cordova.console" via plugin registry
+Fetching plugin "com.ionic.keyboard" via plugin registry
+
+Your Ionic project is ready to go! Some quick tips:
+
+ * cd into your project: $ cd myApp
+
+ * Setup this project to use Sass: ionic setup sass
+
+ * Develop in the browser with live reload: ionic serve
+
+ * Add a platform (ios or Android): ionic platform add ios [android]
+   Note: iOS development requires OS X currently
+   See the Android Platform Guide for full Android installation instructions:
+   https://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html
+
+ * Build your app: ionic build <PLATFORM>
+
+ * Simulate your app: ionic emulate <PLATFORM>
+
+ * Run your app on a device: ionic run <PLATFORM>
+
+ * Package an app using Ionic package service: ionic package <MODE> <PLATFORM>
+
+For more help use ionic --help or visit the Ionic docs: http://ionicframework.com/docs
+```
+
